@@ -1,0 +1,8 @@
+body{
+    background-color: lightyellow;
+}
+
+.nav-item {
+    margin-right: 3rem;
+    text-decoration: none;
+}
