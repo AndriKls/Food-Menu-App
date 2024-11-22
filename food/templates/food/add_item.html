@@ -5,7 +5,7 @@
 {% block body %}
 
 
-<form method="POST" action="{%url 'food:add-item'%}">
+<form method="POST" action="{% if item %}{% url 'food:update-item' item.id %}{% else %}{% url 'food:add-item' %}{% endif %}">
     {% csrf_token %}
     {%for field in form%}
     <div class="form-control">

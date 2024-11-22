@@ -37,7 +37,7 @@ def update_item(request, id):
         form.save()
         return redirect('food:index')
     
-    return render(request, 'food/add_item.html', {'form': form})
+    return render(request, 'food/add_item.html', {'form': form, 'item': item})
 
 
 def delete_item(request, id):
