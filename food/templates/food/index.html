@@ -2,7 +2,7 @@
 {%load static%}
 
 
-{% block title %}Items{% endblock title %}
+{% block title %}Pakkumised{% endblock title %}
 {% block body %}
 
 {%for item in item_list%}
@@ -17,6 +17,7 @@
     </div>
     <div class="col-md-2">
         <a href="{%url 'food:detail' item.id%}" class="btn btn-success">Detailid</a>
+        <a href="{%url 'food:update-item' item.id%}" class="btn btn-warning">Muuda</a>
     </div>
 </div>
 
