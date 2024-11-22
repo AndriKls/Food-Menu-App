@@ -1,6 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Item
+from django.views.generic.edit import FormView
+from .forms import ItemForm
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -13,3 +16,14 @@ def index(request):
 def detail(request, id):
     return render(request, 'food/item-details.html',{
         'item': Item.objects.get(id=id)})
+
+
+class AddItemView(FormView):
+    form_class = ItemForm
+    template_name = 'food/add_item.html'
+    success_url = reverse_lazy('food:index')
+
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)

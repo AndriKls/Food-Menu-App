@@ -5,5 +5,6 @@ from food import views
 app_name = 'food'  
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:id>/', views.detail, name='detail'),  # Add a URL pattern for the item view
+    path('<int:id>/', views.detail, name='detail'),
+    path('add-item/', views.AddItemView.as_view(), name='add-item')
 ]
