@@ -4,18 +4,21 @@ from .models import Item
 from django.views.generic.edit import FormView
 from .forms import ItemForm
 from django.urls import reverse_lazy
-
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 # Create your views here.
-def index(request):
-    item_list = Item.objects.all()
-    return render(request, 'food/index.html',{
-        'item_list': item_list,
-    })
 
-def detail(request, id):
-    return render(request, 'food/item-details.html',{
-        'item': Item.objects.get(id=id)})
+class Index(ListView):
+    model = Item
+    template_name = 'food/index.html'
+    context_object_name = 'item_list'
+
+
+class Detail(DetailView):
+    model = Item
+    template_name = 'food/item-details.html'
+    context_object_name = 'item'
 
 
 class AddItemView(FormView):
