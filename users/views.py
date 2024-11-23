@@ -13,7 +13,7 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Registreerumine õnnestus!')
-            return redirect('food:login')
+            return redirect('login')
         else:
             return render(request, 'users/register.html', {'form': form})
     form = RegisterForm()
