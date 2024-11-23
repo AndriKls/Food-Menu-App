@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{% if item %}{% url 'food:update-item' item.id %}{% else %}{% url 'food:add-item' %}{% endif %}">
+                    <form method="POST" action="{% if item %}{% url 'food:update-item' item.id %}{% else %}{% url 'food:add-item' %}{% endif %}" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{form|crispy}}
                         <button type="submit">Salvesta</button>

@@ -7,6 +7,8 @@ from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -23,7 +25,7 @@ class Detail(DetailView):
 
 
 
-class AddItemView(CreateView):
+class AddItemView(LoginRequiredMixin, CreateView):
     model = Item
     fields = ['item_name', 'item_description', 'item_price', 'item_image', 'item_full_description'  ]
     template_name = 'food/add_item.html'
@@ -32,7 +34,7 @@ class AddItemView(CreateView):
         form.instance.user_name = self.request.user
         return super().form_valid(form)
     
-
+@login_required
 def update_item(request, id):
     item = Item.objects.get(id=id)
     form = ItemForm(request.POST or None, instance=item)
@@ -43,7 +45,7 @@ def update_item(request, id):
     
     return render(request, 'food/add_item.html', {'form': form, 'item': item})
 
-
+@login_required
 def delete_item(request, id):
     item = Item.objects.get(id=id)
 
