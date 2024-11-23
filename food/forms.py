@@ -3,15 +3,17 @@ from .models import Item
 
 
 
+
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = '__all__'
+        fields = ['item_name', 'item_description', 'item_price', 'item_image', 'item_full_description']
         labels = {
-           "item_name": "Item Name",
-            "item_description": "Item Description",
-            "item_price": "Item Price",
-            "item_image": "Item Image",
+            "item_name": "Pakkumise nimi",
+            "item_description": "Pakkumise lühikirjeldus",
+            "item_price": "Pakkumise Hind",
+            "item_image": "Pakkumise Pilt",
+            "item_full_description": "Pakkumise täiskirjeldus",
         }
         error_messages = {
             "item_name": {
@@ -30,3 +32,7 @@ class ItemForm(forms.ModelForm):
                 "invalid_image": "Please add a valid image URL.",
             },
         }
+        widgets = {
+            "item_full_description": forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+        }
+        

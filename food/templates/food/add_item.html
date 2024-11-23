@@ -1,23 +1,34 @@
 {%extends "food/base.html"%}
+{% load crispy_forms_tags %}
 
-{% block title %}Add Item{% endblock title %}
+{% block title %}Lisa Pakkumine{% endblock title %}
 
 {% block body %}
 
 
-<form method="POST" action="{% if item %}{% url 'food:update-item' item.id %}{% else %}{% url 'food:add-item' %}{% endif %}">
-    {% csrf_token %}
-    {%for field in form%}
-    <div class="form-control">
-        {{field.label_tag}}
-        {{field}}
-        {{field.errors}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header text-white bg-info">
+                    <div class="card-title">
+                        Uus Pakkumine
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{% if item %}{% url 'food:update-item' item.id %}{% else %}{% url 'food:add-item' %}{% endif %}">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <button type="submit">Salvesta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    {%endfor%}
-    <button type="submit">Save</button>
-</form>
+</div>
 
 
 
 {% endblock body %}
+
+

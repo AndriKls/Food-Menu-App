@@ -1,1 +1,16 @@
-<h1>Olete välja logitud.</h1>
+{% extends "food/base.html" %}
+{% block title %}Olete välja logitud.{% endblock title %}
+
+
+{% block body %}
+<div class="d-flex flex-column align-items-center justify-content-start min-vh-100 text-center pt-5">
+    <div class="bg-success text-white w-50 p-4 rounded">
+        <h1 class="mb-4 fw-light fs-8">Olete välja logitud.</h1>
+        <a href="{% url 'food:index' %}" class="btn btn-primary">Tagasi pealehele</a>
+    </div>
+</div>
+
+
+
+
+{% endblock body %}

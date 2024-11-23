@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <img src="{{item.item_image}}" class="card" width="600" height="auto" >
+            <img src="{{item.item_image.url}}" class="card" width="600" height="auto" >
         </div>
 
         <div class="col-md-6">
@@ -18,7 +18,9 @@
             <h3>€{{item.item_price}}</h3>
             <p>{{item.item_full_description}}</p>
             <a href="{% url 'food:index' %}" class="btn btn-primary">Tagasi</a>
+            {%if  user.is_authenticated%}
             <a href="{%url 'food:delete-item' item.id%}" class="btn btn-danger">Kustuta</a>
+            {%endif%}
         </div>
     </div>
 </div>

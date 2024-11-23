@@ -25,9 +25,9 @@ class Detail(DetailView):
 
 class AddItemView(CreateView):
     model = Item
-    fields = ['item_name', 'item_description', 'item_price', 'item_image']
+    fields = ['item_name', 'item_description', 'item_price', 'item_image', 'item_full_description'  ]
     template_name = 'food/add_item.html'
-    
+
     def form_valid(self, form):
         form.instance.user_name = self.request.user
         return super().form_valid(form)

@@ -15,12 +15,11 @@
     <nav class="navbar navbar-dark bg-dark mb-3">
         <a href="#" class="navbar-brand">Andri Pitsa &amp; Burger</a>
         <div class="navbar">
-            <a class="nav-item " href="{%url 'food:add-item'%}">Lisa Pakkumine</a>
-            <a class="nav-item " href="#">Kustuta Pakkumine</a>
-            <a class="nav-item " href="#">Vaata Pakkumist</a>
             {%if  user.is_authenticated%}
-             <a class="nav-item " href="{%url 'logout'%}">Logi välja</a>
-             <a class="nav-item" href="{%url 'profile'%}">Profiil</a>
+            <a class="nav-item " href="{%url 'food:add-item'%}">Lisa Pakkumine</a>
+            <a class="nav-item" href="{%url 'profile'%}">Profiil</a>
+            <a class="nav-item " href="{%url 'logout'%}">Logi välja</a>
+             
              {%else%}
              <a class="nav-item " href="{%url 'login'%}">Logi sisse</a>
              {%endif%}
