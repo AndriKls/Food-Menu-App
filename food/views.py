@@ -6,6 +6,7 @@ from .forms import ItemForm
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 
 # Create your views here.
 
@@ -21,16 +22,16 @@ class Detail(DetailView):
     context_object_name = 'item'
 
 
-class AddItemView(FormView):
-    form_class = ItemForm
+
+class AddItemView(CreateView):
+    model = Item
+    fields = ['item_name', 'item_description', 'item_price', 'item_image']
     template_name = 'food/add_item.html'
-    success_url = reverse_lazy('food:index')
-
-
+    
     def form_valid(self, form):
-        form.save()
+        form.instance.user_name = self.request.user
         return super().form_valid(form)
-
+    
 
 def update_item(request, id):
     item = Item.objects.get(id=id)
