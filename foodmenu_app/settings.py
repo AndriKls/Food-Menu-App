@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_bootstrap5',
+    'crispy_forms',
     'users',
     'food',
     'django.contrib.admin',
@@ -130,3 +132,5 @@ LOGIN_REDIRECT_URL = 'food:index'
 LOGIN_URL = 'login'
 MEDIA_ROOT = BASE_DIR / 'pictures'
 MEDIA_URL = '/pictures/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
